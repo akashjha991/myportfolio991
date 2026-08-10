@@ -51,7 +51,7 @@ interface QSTile {
 
 export function NotificationShade({ open, onClose, theme, onToggleTheme }: NotificationShadeProps) {
   const y = useMotionValue(-100);
-  const shadeOpacity = useTransform(y, [-window?.innerHeight ?? -800, 0], [0, 1]);
+  const shadeOpacity = useTransform(y, [-800, 0], [0, 1]);
   const [notifications, setNotifications] = useState(NOTIFICATIONS);
 
   const tiles: QSTile[] = [
