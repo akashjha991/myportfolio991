@@ -46,11 +46,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    /*
-     * Only run on "/" and "/android".
-     * Exclude API routes, static files, images, and metadata files.
-     */
-    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
-  ],
+  matcher: ["/", "/android"],
 };

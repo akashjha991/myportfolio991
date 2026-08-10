@@ -4,7 +4,7 @@ export const SITE_CONFIG = {
   description:
     "Software Developer specializing in Java, Full Stack Development, and product building. MCA student at ABES Engineering College. Global Rank 1799 in TCS CodeVita Season 12.",
   url: "https://aakashjha.dev",
-  ogImage: "/og-image.png",
+  ogImage: "/profile.jpg",
   author: "Aakash Jha",
   email: "akashjha991@gmail.com",
   github: "https://github.com/akashjha991",
