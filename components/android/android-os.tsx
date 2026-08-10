@@ -63,18 +63,6 @@ function PhoneBezel({
           `,
         }}
       >
-        {/* Notch / Dynamic Island */}
-        <div
-          className="absolute top-2.5 left-1/2 -translate-x-1/2 z-50"
-          style={{
-            width: 120,
-            height: 34,
-            background: "#000",
-            borderRadius: 20,
-          }}
-          aria-hidden="true"
-        />
-
         {/* Inner content area */}
         <div
           className="relative flex-1 flex flex-col overflow-hidden"
@@ -254,41 +242,42 @@ function AndroidContent() {
       {/* === HOME + APP LAYER === */}
       {(phase === "home" || phase === "app") && (
         <div className="flex flex-col h-full relative z-10">
-          {/* Status bar (home screen) */}
-          {phase === "home" && (
-            <StatusBar theme={theme} onSwipeDown={() => setShadeOpen(true)} />
-          )}
+          {/* Status bar (always at top) */}
+          <StatusBar theme={theme} onSwipeDown={() => setShadeOpen(true)} />
 
-          {/* Home screen */}
-          <AnimatePresence>
-            {phase === "home" && (
-              <motion.div
-                key="home"
-                className="flex-1 flex flex-col overflow-hidden"
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.96 }}
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              >
-                <HomeScreen onOpenApp={handleOpenApp} theme={theme} />
-              </motion.div>
-            )}
-          </AnimatePresence>
+          {/* Middle screen area (Home or App) */}
+          <div className="flex-1 min-h-0 relative overflow-hidden flex flex-col">
+            {/* Home screen */}
+            <AnimatePresence>
+              {phase === "home" && (
+                <motion.div
+                  key="home"
+                  className="absolute inset-0 flex flex-col overflow-hidden"
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                >
+                  <HomeScreen onOpenApp={handleOpenApp} theme={theme} />
+                </motion.div>
+              )}
+            </AnimatePresence>
 
-          {/* App screens */}
-          <AnimatePresence>
-            {phase === "app" && activeApp && (
-              <AppLauncher
-                key={`app-${activeApp}`}
-                activeApp={activeApp}
-                theme={theme}
-                onClose={handleCloseApp}
-                onOpenShade={() => setShadeOpen(true)}
-              />
-            )}
-          </AnimatePresence>
+            {/* App screens */}
+            <AnimatePresence>
+              {phase === "app" && activeApp && (
+                <AppLauncher
+                  key={`app-${activeApp}`}
+                  activeApp={activeApp}
+                  theme={theme}
+                  onClose={handleCloseApp}
+                  onOpenShade={() => setShadeOpen(true)}
+                />
+              )}
+            </AnimatePresence>
+          </div>
 
-          {/* Bottom nav (always visible on home/app) */}
+          {/* Bottom nav (permanently fixed at bottom) */}
           <BottomNav
             activeApp={activeApp}
             theme={theme}

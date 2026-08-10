@@ -7,7 +7,6 @@ import { ProjectsApp } from "./apps/projects-app";
 import { SkillsApp } from "./apps/skills-app";
 import { AchievementsApp } from "./apps/achievements-app";
 import { ContactApp } from "./apps/contact-app";
-import { StatusBar } from "./status-bar";
 
 interface AppLauncherProps {
   activeApp: AppId;
@@ -37,7 +36,7 @@ export function AppLauncher({ activeApp, theme, onClose, onOpenShade }: AppLaunc
   return (
     <motion.div
       key={`app-${activeApp}`}
-      className="absolute inset-0 flex flex-col z-20"
+      className="absolute inset-0 flex flex-col z-10"
       style={{ background: bg }}
       initial={{ scale: 0.9, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
@@ -45,8 +44,6 @@ export function AppLauncher({ activeApp, theme, onClose, onOpenShade }: AppLaunc
       transition={{ type: "spring", stiffness: 350, damping: 32 }}
       layoutId={`app-icon-${activeApp}`}
     >
-      {/* Status bar */}
-      <StatusBar theme={theme} onSwipeDown={onOpenShade} />
 
       {/* App top bar */}
       <div

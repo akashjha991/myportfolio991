@@ -60,7 +60,7 @@ export function StatusBar({ theme, onSwipeDown }: StatusBarProps) {
 
   return (
     <div
-      className={`flex items-center justify-between px-4 h-7 flex-shrink-0 relative z-20 select-none cursor-pointer ${textColor}`}
+      className={`flex items-center justify-between pt-2.5 px-5 h-9 flex-shrink-0 relative z-20 select-none cursor-pointer ${textColor}`}
       style={{ background: "transparent" }}
       onClick={onSwipeDown}
       aria-label="Status bar — tap to open notification shade"

@@ -207,7 +207,7 @@ export function HomeScreen({ onOpenApp, theme }: HomeScreenProps) {
           onDragEnd={handleDragEnd}
         >
           {/* Page 1: App grid */}
-          <div className="min-w-full h-full flex flex-col justify-center px-6">
+          <div className="min-w-full h-full flex flex-col pt-3 px-5">
             <div className="grid grid-cols-4 gap-x-2 gap-y-6 justify-items-center">
               {ANDROID_APPS.map((app) => (
                 <SquircleIcon
@@ -224,11 +224,11 @@ export function HomeScreen({ onOpenApp, theme }: HomeScreenProps) {
           </div>
 
           {/* Page 2: Widgets */}
-          <div className="min-w-full h-full flex flex-col justify-center gap-4 py-4">
+          <div className="min-w-full h-full flex flex-col pt-2 gap-3 py-2">
             <ClockWidget theme={theme} />
             <BuildingWidget />
             {/* Mini app grid for page 2 */}
-            <div className="mx-4 flex gap-4 justify-center">
+            <div className="mx-4 flex gap-4 justify-center mt-1">
               {PAGE2_APPS.map((app) => (
                 <SquircleIcon
                   key={app.id}
